@@ -1,12 +1,12 @@
 # go-clean-architecture
 
-# Overview
-This project implements Clean Architecture in Go. 
-All business logic and models are in internal/domain, interaction with external systems is in internal/adapters. 
-The application entry point is cmd/main.go. 
-Packages in pkg are intended for external reuse.
+## Overview
+This project implements Clean Architecture in Go.  
+All business logic and models are in `internal/domain`, interaction with external systems is in `internal/adapters`.  
+The application entry point is `cmd/main.go`.  
+Packages in `pkg` are intended for external reuse.
 
-# Project Structure
+## Project Structure
 
 ```bash
 golang-clean-architecture/
@@ -19,22 +19,29 @@ golang-clean-architecture/
 │   ├── adapters/           # Adapters for external systems
 │   │   ├── api/            # HTTP API controllers
 │   │   │   ├── book/
-│   │   │   │   └── controllers.go
-│   │   │   ├── interface.go
-│   │   │   └── user/
-│   │   │       └── controllers.go
-│   │   └── db/
-│   │       └── book/
+│   │   │   │   ├── handlers.go
+│   │   │   │   └── interface.go
+│   │   │   ├── author/
+│   │   │   │   ├── handlers.go
+│   │   │   │   └── interface.go
+│   │   │   └── interface.go
+│   │   └── db/                 # Database adapters
+│   │       ├── book/
+│   │       │   └── storage.go
+│   │       └── author/
 │   │           └── storage.go
-│   └── domain/             # Business logic and models
+│   └── domain/                 # Business logic and models
 │       ├── book/
 │       │   ├── dto.go      # Book DTOs
 │       │   ├── model.go    # Book model
 │       │   ├── service.go  # Book service
 │       │   └── storage.go  # Book storage interface
-│       └── user/
-│           └── model.go    # User model
-├── pkg/                    # Public libraries for external use
+│       └── author/
+│           ├── dto.go
+│           ├── model.go
+│           ├── service.go
+│           └── storage.go
+├── pkg/                        # Public libraries for external use
 │   └── client/
 │       └── mongodb/
 │           └── mongodb.go  # MongoDB client
